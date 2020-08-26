@@ -5,9 +5,30 @@
 + BFS
 + DFS
 
-## 添加新算法
+## 设置障碍物
 
-如果写其他算法，只需要继承自`FindPathBase`类，
++ 手动设置: 
+
+    + 鼠标左键点击设置障碍物，右键点击清除障碍物。按住左/右键不松，移动鼠标，可连续设置/清除障碍物。
+    + 左键点击一个点，然后按住`shift`键，再点击一个点，即可生成水平或竖直直线。
+
+    ![manual](assets/manual.png)
+
++ 随机生成: 点击`Random Obstacles`按钮，输入千分比，自动随机生成相应比例的障碍物
+
+    ![random](assets/random.png)
+
+
+## 修改颜色
+
+双击颜色块，即可修改相应的颜色
+
+![set-colors](assets/colors.png) 
+
+
+## 添加新的寻路算法
+
+如果要写其他寻路算法，只需要继承自`FindPathBase`类，
 
 并重写`std::list<Coordinate> findPath(src, dest)`函数。
 
@@ -39,7 +60,7 @@ public:
             Coordinate newCoord = ...;
 
             // 该点是障碍物
-            if (detectObstace(newCoord)) {
+            if (detectObstacle(newCoord)) {
                 continue;
             }
 
@@ -105,7 +126,7 @@ public:
 
 ### [4/4] B Star (With bugs)
 
-Only used for obstacles
+Only suitable for situations with few obstacles. (At least)
 
 ![bstar](assets/bstar.png) 
 
